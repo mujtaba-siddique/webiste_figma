@@ -13,6 +13,7 @@ import Stack from "@mui/material/Stack";
 import PowerfullButtonn from "./PowerfullButtonn";
 import LandingPage2 from "./Landingpage2";
 import LandingPage3 from "./LandingPage3";
+import LandingPage4 from "./LandingPage4";
 
 const LandingPage = () => {
   return (
@@ -239,6 +240,7 @@ const LandingPage = () => {
       </div>
       <LandingPage2></LandingPage2>
       <LandingPage3></LandingPage3>
+      <LandingPage4></LandingPage4>
     </>
   );
 };
