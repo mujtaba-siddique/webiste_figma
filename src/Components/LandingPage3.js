@@ -49,7 +49,6 @@ function LandingPage3() {
           justifyContent: "center",
           alignItems: "center",
           marginTop: { xs: "50px", sm: "100px" },
-          
         }}
       >
         <Button
@@ -109,15 +108,14 @@ function LandingPage3() {
       >
         <Grid
           container
-          spacing={{xs:6,md:4}}
+          spacing={{ xs: 6, md: 4 }}
           sx={{
             padding: { xs: "20px", md: "40px" },
             display: "flex",
             flexWrap: "wrap", // Allow wrap for responsiveness
-            marginTop: {md:"20px",xs:"20px"},
-            marginLeft:"1rem",
-            marginRight:"1rem"
-            
+            marginTop: { md: "20px", xs: "20px" },
+            marginLeft: "1rem",
+            marginRight: "1rem",
           }}
         >
           {columnsData.map((column) => (
@@ -139,13 +137,12 @@ function LandingPage3() {
                   padding: 2,
                   borderRadius: "16px",
                   boxShadow: 3,
-                  position: "relative",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                   height: "100%", // Make sure Paper takes up the full height of the grid item
-                  minHeight:"37rem"
+                  minHeight: "42rem",
                 }}
               >
                 {/* Image positioned at the top of the column */}
@@ -153,12 +150,10 @@ function LandingPage3() {
                   src={column.image}
                   alt={column.title}
                   style={{
-                    position: "absolute",
-                    top: "-7.5%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "80px",
-                    height: "80px",
+                    width: "80px", // Set a fixed width
+                    height: "80px", // Set a fixed height
+                    marginTop: "-105px", // Adjust image position with margin
+                    marginBottom: "20px", // Space between the image and the content
                   }}
                 />
                 <Typography
