@@ -49,6 +49,7 @@ function LandingPage3() {
           justifyContent: "center",
           alignItems: "center",
           marginTop: { xs: "50px", sm: "100px" },
+          
         }}
       >
         <Button
@@ -99,7 +100,7 @@ function LandingPage3() {
       {/* Background and 3-column Grid */}
       <div
         style={{
-          height: "100vh",
+         
           backgroundImage: `url(${Backgroundpic})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -108,21 +109,22 @@ function LandingPage3() {
       >
         <Grid
           container
-          spacing={{ xs: 6, md: 4 }}
+          spacing={{xs:7,md:4}}
           sx={{
             padding: { xs: "20px", md: "40px" },
             display: "flex",
             flexWrap: "wrap", // Allow wrap for responsiveness
-            marginTop: { md: "20px", xs: "20px" },
-            marginLeft: "1rem",
-            marginRight: "1rem",
+            marginTop: {md:"20px",xs:"20px"},
+            marginLeft:"1rem",
+            marginRight:"1rem"
+            
           }}
         >
           {columnsData.map((column) => (
             <Grid
               item
               xs={12}
-              sm={4} // Equal width for each column
+              sm={12} // Equal width for each column
               md={4} // Equal width for each column
               key={column.id}
               sx={{
@@ -137,12 +139,13 @@ function LandingPage3() {
                   padding: 2,
                   borderRadius: "16px",
                   boxShadow: 3,
+                  position: "relative",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                   height: "100%", // Make sure Paper takes up the full height of the grid item
-                  minHeight: "42rem",
+                  minHeight:"37rem"
                 }}
               >
                 {/* Image positioned at the top of the column */}
@@ -150,10 +153,12 @@ function LandingPage3() {
                   src={column.image}
                   alt={column.title}
                   style={{
-                    width: "80px", // Set a fixed width
-                    height: "80px", // Set a fixed height
-                    marginTop: "-105px", // Adjust image position with margin
-                    marginBottom: "20px", // Space between the image and the content
+                    position: "absolute",
+                    top: "-7.5%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "80px",
+                    height: "80px",
                   }}
                 />
                 <Typography

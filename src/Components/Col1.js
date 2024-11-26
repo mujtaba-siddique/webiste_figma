@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Box, Typography, Avatar, Stack } from "@mui/material";
+import avtarimg from "../Images/Background+Border-1.png"
+import avtarimg1 from "../Images/Background+Border-2.png"
 
 
 function Col1() {
@@ -30,8 +32,8 @@ function Col1() {
       <Box sx={{ margin: "20px" }}>
       {/* First Stack with Avatar and Text */}
       <Stack direction="row" spacing={2} alignItems="center">
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <Typography variant="body1">
+        <Avatar alt="Remy Sharp" src={avtarimg} />
+        <Typography variant="body1" fontFamily="inter" color='black'fontWeight={500}>
           I've placed both the Button and the Stack inside a single Box component, which is set to
           <Typography variant="body2" color="text.secondary">13 minutes ago</Typography>
         </Typography>
@@ -40,8 +42,8 @@ function Col1() {
 
       {/* Second Stack with Avatar and Text */}
       <Stack direction="row" spacing={2} alignItems="center" marginTop={2}>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <Typography variant="body1">
+        <Avatar alt="Remy Sharp" src={avtarimg1} />
+        <Typography variant="body1" fontFamily="inter" color='black'fontWeight={500}>
           I've placed both the Button and the Stack inside a single Box component, which is set to
           <Typography variant="body2" color="text.secondary">26 minutes ago</Typography>
         </Typography>
