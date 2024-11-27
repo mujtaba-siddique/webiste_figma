@@ -27,7 +27,7 @@ const Col2 = () => {
       {
         label: 'Sales',
         data: [880.21, 760.45, 920.32, 1020.45, 1200.56, 1100.78, 882.21],
-        backgroundColor: '#3f51b5', // Bar color
+        backgroundColor: '#1e2026', // Bar color
       },
     ],
   };
