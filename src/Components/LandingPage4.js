@@ -40,6 +40,7 @@ function LandingPage4() {
           justifyContent: "center", // Horizontally center the content
           alignItems: "center", // Vertically center the content
           backgroundColor: "#f0f0f0", // Optional: Light gray background
+          marginTop: { xs: "50px", sm: "250px" },
         }}
       >
         <img

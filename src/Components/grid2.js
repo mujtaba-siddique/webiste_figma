@@ -3,6 +3,7 @@ import { Grid, Box, Typography } from '@mui/material'; // Import necessary compo
 
 function Grid2() {
   return (
+    <Box marginTop={50}>
     <div>
       {/* Second Grid Layout with 12 columns */}
       <Grid container spacing={2} sx={{ marginTop: "1.5rem" }}>
@@ -43,6 +44,7 @@ function Grid2() {
         </Grid>
       </Grid>
     </div>
+    </Box>
   );
 }
 

@@ -21,7 +21,7 @@ function LandingPage2() {
       <Grid
         container
         spacing={2}
-        marginTop={10}
+        marginTop={15}
         sx={{
           marginLeft: { md: "100px" },
           gap: { xs: "10px", md: "0" }, // Adjusting the margin between columns in mobile view (10px) and default for desktop
