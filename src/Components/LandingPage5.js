@@ -14,19 +14,18 @@ function LandingPage5() {
   return (
     <Box
       sx={{
-       
         backgroundImage: `url(${BackgroundPink})`, // Use the imported image as the background
         backgroundSize: "cover", // Ensure the background image covers the entire page
         backgroundPosition: "center", // Center the background image
         // marginLeft: { xs: "1rem", sm: "2rem", md: "3.5rem" }, // Responsive margin
         marginTop: { xs: "50px", sm: "250px" }, // Responsive margin
-        px:{sm:"10rem"}
+        px: { lg: "10rem", md: "5rem", sm: "3rem" },
       }}
     >
       {/* Main Grid Layout */}
-      <Grid container >
+      <Grid container>
         {/* First Column (7/12 of the grid) */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12} lg={7}>
           <Box
             sx={{
               // height: "300px",
@@ -42,17 +41,21 @@ function LandingPage5() {
               redefining growth.
             </Typography>
             <Typography
-              variant="body2"
+              variant="body1"
               marginTop={3}
-              marginRight={{ xs: "100px", sm: "200px", md: "300px" }}
+              marginRight={{ xs: "100px", sm: "100px", lg: "200px" }}
             >
               This is the content for the first column. It takes up 7/12 of the
-              grid width.
+              grid width.This is the content for the first column. It takes up
+              7/12 of the grid width.This is the content for the first column.
+              It takes up 7/12 of the grid width.This is the content for the
+              first column. It takes up 7/12 of the grid width.This is the
+              content for the first column. It takes up 7/12 of the grid width.
             </Typography>
             <Button
               variant="outlined"
               sx={{
-                marginTop: 2,
+                marginTop: 4,
                 backgroundColor: "#1e2026",
                 color: "white",
                 borderColor: "#1e2026",
@@ -78,31 +81,37 @@ function LandingPage5() {
               display: "flex",
               alignItems: "center",
               // marginTop: { md: "70px", xs: "20px", lg: "15px" },
-              justifyContent:"space-between"
+              justifyContent: {lg: 'left', md:"left", sm:"space-between", xs:"space-between"},
             }}
           >
-            <Box sx={{
-                  display: "flex",
-                  alignItems: "center",
-                   justifyContent:"left",
-                   verticalAlign:"middle"
-            }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "left",
+                verticalAlign: "middle",
+                marginTop: "15px",
+              }}
+            >
               <CheckCircleRoundedIcon
-              sx={{ fontSize: "24px", color: "#1e2026" }}
-            />
-            <Typography sx={{ fontSize: "16px", marginLeft: "10px" }}>
-              Register users in seconds
-            </Typography></Box>
-            <img
+                sx={{ fontSize: "24px", color: "#1e2026" }}
+              />
+              <Typography sx={{ fontSize: "16px", marginLeft: "10px" }}>
+                Register users in seconds
+              </Typography>
+            </Box>
+          <Box sx={{marginLeft: { md: "10rem", lg: "10rem" },}}>
+          <img
               src={eglo}
               alt="eglo"
               style={{
-                // transform: "translateX(150%)",
-                paddingRight:"5rem",
-                width: "48.72px",
-                height: "48.72px",
+                // paddingRight:{md:"5rem"},
+                // marginLeft: { md: "10rem", lg: "10rem" },
+                width: "60.72px",
+                height: "60.72px",
               }}
             />
+          </Box>
           </Box>
 
           {/* Additional CheckCircleRoundedIcon Section */}
@@ -117,14 +126,14 @@ function LandingPage5() {
         </Grid>
 
         {/* Second Column (5/12 of the grid) */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12} lg={5}>
           <Box
             sx={{
-              marginLeft: { md: "20px"},
+              // marginLeft: { md: "20px",sm:"10px"},
               //height: "300px",
               borderRadius: 2,
               backgroundColor: "white",
-              marginTop: { xs: "30px", md: "20px" },
+              marginTop: { xs: "30px", sm: "6rem", md: "6rem" },
             }}
           >
             {/* Top Icons */}
@@ -189,7 +198,7 @@ function LandingPage5() {
             >
               <Box
                 sx={{
-                  margin: { sm: "20px 10px", xs: "10px" },
+                  margin: { sm: "10px", xs: "10px" },
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -200,7 +209,7 @@ function LandingPage5() {
                   sx={{
                     fontSize: {
                       xs: "4rem", // small screens
-                      sm: "6rem", // medium screens
+                      sm: "4rem", // medium screens
                       md: "80px", // large screens
                     },
                   }}
@@ -215,7 +224,9 @@ function LandingPage5() {
                     marginTop: { xs: "50px", sm: "15px" },
                   }}
                 >
-                  <PiNavigationArrowFill style={{ marginBottom: "15px" }} />
+                  <PiNavigationArrowFill
+                    style={{ marginBottom: "15px", color: "black" }}
+                  />
                   <Typography
                     sx={{
                       fontSize: "13px",
@@ -238,7 +249,7 @@ function LandingPage5() {
               <Typography
                 sx={{
                   fontFamily: "inter",
-                  marginTop: { xs: "-3px", sm: "-25px" },
+                  marginTop: { xs: "-3px", md: "-25px" },
                   display: "flex",
                   fontSize: "15px",
                   marginLeft: "14px",
@@ -249,10 +260,12 @@ function LandingPage5() {
                   sx={{
                     marginLeft: { xs: "2rem", md: "5rem" },
                     display: "flex",
-                    marginTop: { xs: "-4px", md: "-6px" },
+                    marginTop: { xs: "-4px", md: "3px" },
                   }}
                 >
-                  <PiNavigationArrowFill style={{ marginBottom: "15px" }} />
+                  <PiNavigationArrowFill
+                    style={{ marginBottom: "15px", color: "black" }}
+                  />
                   <Typography
                     sx={{
                       fontSize: "13px",
@@ -275,10 +288,12 @@ function LandingPage5() {
                   sx={{
                     marginLeft: { xs: "2rem", md: "2rem" },
                     display: "flex",
-                    marginTop: { xs: "-4px", md: "-6px" },
+                    marginTop: { xs: "-4px", md: "3px" },
                   }}
                 >
-                  <PiNavigationArrowFill style={{ marginBottom: "15px" }} />
+                  <PiNavigationArrowFill
+                    style={{ marginBottom: "15px", color: "black" }}
+                  />
                   <Typography
                     sx={{
                       fontSize: "13px",
@@ -302,7 +317,8 @@ function LandingPage5() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  marginTop: "20px",marginLeft:"25px"
+                  marginTop: "20px",
+                  marginLeft: "25px",
                 }}
               >
                 <PiDiamondsFourFill color="#6666ff" />
@@ -316,7 +332,9 @@ function LandingPage5() {
                   border: "2px solid #6666ff",
                   padding: "20px",
                   color: "black",
-                  marginTop: "10px",marginLeft:"25px",marginRight:"50px"
+                  marginTop: "10px",
+                  marginLeft: "25px",
+                  marginRight: "50px",
                 }}
               >
                 Intuitive interface foe seamless navigation and interaction
@@ -325,11 +343,12 @@ function LandingPage5() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  marginTop: "20px",marginLeft:"25px"
+                  marginTop: "20px",
+                  marginLeft: "25px",
                 }}
               >
                 <PiDiamondsFourFill color="#6666ff" />
-                <Typography sx={{ marginLeft: "10px", color: "#6666ff", }}>
+                <Typography sx={{ marginLeft: "10px", color: "#6666ff" }}>
                   {" "}
                   Customization Options
                 </Typography>
@@ -340,7 +359,8 @@ function LandingPage5() {
                   padding: "20px",
                   color: "black",
                   marginTop: "10px",
-                  marginLeft:"25px",marginRight:"50px"
+                  marginLeft: "25px",
+                  marginRight: "50px",
                 }}
               >
                 Intuitive interface foe seamless navigation and interaction
@@ -363,7 +383,7 @@ function LandingPage5() {
                     fontWeight: "500",
                     boxShadow: 1, // Box shadow for the button
                     width: "100%", // Adjust width as needed (relative to parent)
-                   
+                    marginRight: "20px",
                   }}
                 >
                   Redefining UI/UX
@@ -374,10 +394,9 @@ function LandingPage5() {
         </Grid>
       </Grid>
 
-    {/* Grid22 Component */}
-    <Grid22 />
+      {/* Grid22 Component */}
+      <Grid22 />
     </Box>
-      
   );
 }
 
