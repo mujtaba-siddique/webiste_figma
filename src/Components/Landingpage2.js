@@ -16,26 +16,27 @@ import img11 from "../Images/SVG-11.png";
 
 function LandingPage2() {
   return (
-    <div style={{ paddingRight: "5rem" }}>
+    <div style={{ paddingRight:{sm:"5rem"}  }}>
       {/* Grid container with 12 columns */}
       <Grid
         container
         spacing={2}
-        marginTop={15}
+        
         sx={{
           marginLeft: { md: "100px" },
           gap: { xs: "10px", md: "0" }, // Adjusting the margin between columns in mobile view (10px) and default for desktop
+          marginTop:{xs:"15px",sm:"8rem"}
         }}
       >
         {/* First section (takes up 6 columns) */}
-        <Grid item xs={12} md={6} sx={{ marginLeft: { xs: "16px", md: "0" } }}>
+        <Grid item xs={12} md={6} >
           <Paper elevation={0}>
             <PowerfullButtonn />
             <Typography
               variant="h3"
               sx={{
                 marginTop: { xs: "15px", sm: "15px", md: "20px" }, // Apply responsive marginTop
-                marginRight: { xs: "50px", sm: "1px", md: "30px" }, // Apply responsive marginRight
+                marginRight: { sm: "1px", md: "30px" }, // Apply responsive marginRight
               }}
             >
               A powerful solution to boost your business performance
@@ -45,10 +46,10 @@ function LandingPage2() {
 
         {/* Second section (takes up 6 columns) */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={0} sx={{ padding: "16px", height: "100%" }}>
+          <Paper elevation={0} sx={{ padding:{sm:"16px"}, height: "100%" }}>
             <Typography
               sx={{
-                marginRight: { xs: "0", sm: "50px", md: "200px" }, // Responsive marginRight
+                marginRight: {  sm: "50px", md: "200px" }, // Responsive marginRight
                 marginTop: { xs: "5px", sm: "15px", md: "30px" }, // Responsive marginTop
                 color: "black", // Color of the text
               }}

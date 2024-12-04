@@ -15,6 +15,7 @@ import LandingPage2 from "./Landingpage2";
 import LandingPage3 from "./LandingPage3";
 import LandingPage4 from "./LandingPage4";
 import LandingPage5 from "./LandingPage5";
+import LandingPage6 from "./LandingPage6";
 
 const LandingPage = () => {
   return (
@@ -243,6 +244,7 @@ const LandingPage = () => {
       <LandingPage3></LandingPage3>
       <LandingPage4></LandingPage4>
       <LandingPage5></LandingPage5>
+      <LandingPage6></LandingPage6>
       
     </>
   );

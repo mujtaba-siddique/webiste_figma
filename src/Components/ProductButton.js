@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@mui/material";
 
-function ProductFeatures() {
+function ProductFeatures({backgroundColor}) {
   return (
     <Button
       sx={{
@@ -12,7 +12,7 @@ function ProductFeatures() {
         cursor: "pointer", // Pointer cursor on hover
         fontFamily: "Inter, sans-serif", // Font family
         fontWeight: 600, // Font weight
-        marginTop: "20px", // Margin at the top
+        // marginTop: "20px", // Margin at the top
         textTransform: "none", // Prevent uppercase transformation
         padding: "5px 16px", // Adjusted padding for a more balanced size
         border: "1px solid #ddd", // Light border to give subtle definition

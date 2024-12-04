@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import { Box, Typography, Button, Grid, Paper } from "@mui/material";
 import BackgroundPink from "../Images/Back.png"; // Importing the background image
 import Brightness1RoundedIcon from "@mui/icons-material/Brightness1Rounded";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
@@ -43,7 +43,7 @@ function LandingPage5() {
             <Typography
               variant="body1"
               marginTop={3}
-              marginRight={{ xs: "100px", sm: "100px", lg: "200px" }}
+              marginRight={{ sm: "100px", lg: "200px" }}
             >
               This is the content for the first column. It takes up 7/12 of the
               grid width.This is the content for the first column. It takes up
@@ -127,13 +127,13 @@ function LandingPage5() {
 
         {/* Second Column (5/12 of the grid) */}
         <Grid item xs={12} md={12} lg={5}>
-          <Box
+          <Paper
             sx={{
               // marginLeft: { md: "20px",sm:"10px"},
               //height: "300px",
               borderRadius: 2,
-              backgroundColor: "white",
-              marginTop: { xs: "30px", sm: "6rem", md: "6rem" },
+              // backgroundColor: "white",
+              marginTop: { xs: "60px", sm: "6rem", md: "6rem", lg:"0px" },
             }}
           >
             {/* Top Icons */}
@@ -192,8 +192,10 @@ function LandingPage5() {
             <Box
               sx={{
                 borderRadius: 2,
-                backgroundColor: "rgba(128, 128, 128, 0.2)",
-                width: { xs: "auto", sm: "100%" }, // Ensures responsiveness
+                backgroundColor: "rgba(128, 128, 128, 0.1)",
+                
+                margin:"10px",
+                marginRight:"20px"
               }}
             >
               <Box
@@ -390,12 +392,13 @@ function LandingPage5() {
                 </Button>
               </Box>
             </Box>
-          </Box>
+          </Paper>
         </Grid>
       </Grid>
 
       {/* Grid22 Component */}
       <Grid22 />
+      
     </Box>
   );
 }
