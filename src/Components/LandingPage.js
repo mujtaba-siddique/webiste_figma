@@ -16,6 +16,8 @@ import LandingPage3 from "./LandingPage3";
 import LandingPage4 from "./LandingPage4";
 import LandingPage5 from "./LandingPage5";
 import LandingPage6 from "./LandingPage6";
+import LandingPage7 from "./LandingPage7";
+import LandingPage8 from "./LandingPage8";
 
 const LandingPage = () => {
   return (
@@ -83,6 +85,7 @@ const LandingPage = () => {
                   display: "flex",
                   alignItems: "center",
                   marginTop: "20px",
+
                 }}
               >
                 <TextField
@@ -108,6 +111,7 @@ const LandingPage = () => {
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     marginLeft: "20px",
+                    marginTop:"-15px"
                   }}
                   onClick={() => alert("Email Submitted!")}
                 >
@@ -245,6 +249,8 @@ const LandingPage = () => {
       <LandingPage4></LandingPage4>
       <LandingPage5></LandingPage5>
       <LandingPage6></LandingPage6>
+      <LandingPage7></LandingPage7>
+      <LandingPage8></LandingPage8>
       
     </>
   );

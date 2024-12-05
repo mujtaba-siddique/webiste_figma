@@ -39,8 +39,8 @@ function LandingPage4() {
           display: "flex", // Use flexbox to center content
           justifyContent: "center", // Horizontally center the content
           alignItems: "center", // Vertically center the content
-          backgroundColor: "#f0f0f0", // Optional: Light gray background
-          marginTop: { xs: "50px", sm: "250px" },
+          // backgroundColor: "#f0f0f0", // Optional: Light gray background
+          marginTop: { xs: "50px", sm: "200px" },
         }}
       >
         <img

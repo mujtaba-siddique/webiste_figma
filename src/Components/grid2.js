@@ -16,7 +16,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 function Grid2() {
   return (
-    <Box marginTop={15}>
+    <Box sx={{marginTop:{sm:"5rem",xs:"1rem"}}} >
       <div>
         {/* Second Grid Layout with 12 columns */}
         <Grid container spacing={2} sx={{ marginTop:{sm:"1rem",}  }}>
