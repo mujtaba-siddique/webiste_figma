@@ -18,7 +18,7 @@ function LandingPage6() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        marginTop: "4rem",
+        marginTop: {xs:"4rem",md:"15rem"},
         borderRadius:2,
         paddingBottom:"10vh"
        

@@ -51,7 +51,7 @@ function LandingPage7() {
         variant="h1"
         sx={{
           textAlign: "center",
-          px: { sm: "5rem", md: "25rem" },
+          px: { sm: "5rem", md: "20rem" },
           marginTop: "1rem",
         }}
       >
@@ -151,10 +151,11 @@ function LandingPage7() {
                   src={img2}
                   alt="Cloud"
                   style={{
-                    width: "352px",
+                    width: "350px",
                     height: "247.8px",
                     display: "block",
                     margin: "20px",
+                    borderRadius: "15px"
                   }}
                 />
               </Box>
