@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper, Button, Typography } from "@mui/material";
+import { Grid, Paper, Button, Typography,Box } from "@mui/material";
 import PowerfullButtonn from "./PowerfullButtonn";
 import img from "../Images/SVG.png";
 import img1 from "../Images/SVG-1.png";
@@ -16,7 +16,9 @@ import img11 from "../Images/SVG-11.png";
 
 function LandingPage2() {
   return (
-    <div style={{ paddingRight:{sm:"5rem"}  }}>
+    <Box sx={{ paddingRight:{sm:"5rem"}, height: {
+      xs: '100vh', // 100vh for extra-small screens
+    }, }}>
       {/* Grid container with 12 columns */}
       <Grid
         container
@@ -188,7 +190,7 @@ function LandingPage2() {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
 

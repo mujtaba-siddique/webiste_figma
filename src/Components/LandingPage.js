@@ -1,5 +1,13 @@
 import React from "react";
-import { Grid, Paper, Typography, Button, TextField, Box } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Button,
+  TextField,
+  Box,
+  InputAdornment,
+} from "@mui/material";
 import SectionBackground from "../Images/Section.png";
 import Boy from "../Images/boy.png";
 import Cloud from "../Images/cloud.png";
@@ -19,18 +27,21 @@ import LandingPage6 from "./LandingPage6";
 import LandingPage7 from "./LandingPage7";
 import LandingPage8 from "./LandingPage8";
 import LandingPage9 from "./LandingPage9";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
     <>
-      <div
-        style={{
-          // height: "100vh",
-          backgroundImage: `url(${SectionBackground})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+      <Box
+       sx={{
+        height: {
+          xs: '100vh', // 100vh for extra-small screens
+        },
+        backgroundImage: `url(${SectionBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
       >
         <Grid container style={{ height: "100%" }}>
           {/* Left Column */}
@@ -80,30 +91,36 @@ const LandingPage = () => {
                 30 Day Free Trial No Credit Card Required:
               </Typography>
 
+              
               {/* Email Input and Button */}
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: { xs: "flex-start", sm: "center" }, // Responsive alignment
+                  flexDirection: { xs: "column", sm: "row" }, // Column on xs, row on larger screens
                   marginTop: "20px",
-
                 }}
               >
+                {/* TextField */}
                 <TextField
                   label="Enter your email"
                   variant="outlined"
                   size="small"
                   sx={{
-                    marginRight: "2px",
+                    marginRight: { sm: "2px" }, // Margin only on larger screens
+                    marginBottom: { xs: "8px", sm: "0" }, // Add spacing for xs
+                    width: { xs: "100%", sm: "50%" }, // Full width on xs
                   }}
                 />
+
+                {/* Button for larger screens */}
                 <Button
                   sx={{
                     backgroundColor: "black",
                     color: "white",
                     borderRadius: "5px",
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "12px",
+                    fontSize: "10px",
                     padding: "8px 16px",
                     textTransform: "none",
                     whiteSpace: "nowrap",
@@ -111,8 +128,31 @@ const LandingPage = () => {
                     width: "auto",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
-                    marginLeft: "20px",
-                    marginTop:"-15px"
+                    display: { xs: "none", sm: "inline-flex" }, // Only show on sm and larger screens
+                    marginTop: { sm: "0", xs: "8px" }, // Space only on xs
+                  }}
+                  onClick={() => alert("Email Submitted!")}
+                >
+                  Get Started ~ it’s free
+                </Button>
+
+                {/* Button for mobile (xs) screens */}
+                <Button
+                  sx={{
+                    backgroundColor: "black",
+                    color: "white",
+                    borderRadius: "5px",
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "10px",
+                    padding: "8px 16px",
+                    textTransform: "none",
+                    whiteSpace: "nowrap",
+                    minWidth: "fit-content",
+                    width: "auto",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    display: { xs: "block", sm: "none" }, // Show only on xs
+                    marginTop: "8px", // Spacing on xs
                   }}
                   onClick={() => alert("Email Submitted!")}
                 >
@@ -244,7 +284,7 @@ const LandingPage = () => {
             </Paper>
           </Grid>
         </Grid>
-      </div>
+      </Box>
       <LandingPage2></LandingPage2>
       <LandingPage3></LandingPage3>
       <LandingPage4></LandingPage4>
@@ -253,7 +293,7 @@ const LandingPage = () => {
       <LandingPage7></LandingPage7>
       <LandingPage8></LandingPage8>
       <LandingPage9></LandingPage9>
-      
+      <Footer></Footer>
     </>
   );
 };

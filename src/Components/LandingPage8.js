@@ -14,7 +14,7 @@ function LandingPage8() {
 
         position: "relative",
         backgroundImage: `url(${blackbb})`,
-        // backgroundPosition: 'center',
+        
         backgroundSize: "cover",
         width: { lg: "944px" },
         height: "394px",

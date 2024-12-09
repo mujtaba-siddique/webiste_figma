@@ -41,6 +41,7 @@ function LandingPage4() {
           alignItems: "center", // Vertically center the content
           // backgroundColor: "#f0f0f0", // Optional: Light gray background
           marginTop: { xs: "50px", sm: "200px" },
+          
         }}
       >
         <img

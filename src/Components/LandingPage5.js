@@ -20,6 +20,7 @@ function LandingPage5() {
         // marginLeft: { xs: "1rem", sm: "2rem", md: "3.5rem" }, // Responsive margin
         marginTop: { xs: "50px", sm: "250px" }, // Responsive margin
         px: { lg: "10rem", md: "5rem", sm: "3rem" },
+        
       }}
     >
       {/* Main Grid Layout */}
