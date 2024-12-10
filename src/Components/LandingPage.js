@@ -6,7 +6,8 @@ import {
   Button,
   TextField,
   Box,
-  InputAdornment,
+  Avatar,
+  Stack,
 } from "@mui/material";
 import SectionBackground from "../Images/Section.png";
 import Boy from "../Images/boy.png";
@@ -16,9 +17,7 @@ import Customer from "../Images/Background-2.png";
 import border1 from "../Images/Background+Border.png";
 import border2 from "../Images/Background+Border-1.png";
 import border3 from "../Images/Background+Border-2.png";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import PowerfullButtonn from "./PowerfullButtonn";
+import PowerfullButtonn from "./PowerfullButtonn"; // Assuming this is a custom button component
 import LandingPage2 from "./Landingpage2";
 import LandingPage3 from "./LandingPage3";
 import LandingPage4 from "./LandingPage4";
@@ -32,16 +31,32 @@ import Footer from "./Footer";
 const LandingPage = () => {
   return (
     <>
+      <style>
+        {`
+          @keyframes jump {
+            0% {
+              transform: translateY(0);
+            }
+            30% {
+              transform: translateY(-30px); /* Jump up */
+            }
+            50% {
+              transform: translateY(0); /* Back down */
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+
       <Box
-       sx={{
-        height: {
-          xs: '100vh', // 100vh for extra-small screens
-        },
-        backgroundImage: `url(${SectionBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+        sx={{
+          backgroundImage: `url(${SectionBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <Grid container style={{ height: "100%" }}>
           {/* Left Column */}
@@ -55,7 +70,7 @@ const LandingPage = () => {
                 marginLeft: "0px",
               }}
             >
-              {/* Custom Button */}
+              {/* PowerfullButtonn Component with Avatar */}
               <PowerfullButtonn />
 
               <Typography
@@ -66,6 +81,7 @@ const LandingPage = () => {
                 sx={{
                   fontWeight: 600,
                   marginRight: { xs: "0px", sm: "10px", md: "100px" },
+                  marginTop: { xs: "20px", md: "0px" },
                 }}
               >
                 Our cutting-edge software solutions
@@ -76,44 +92,42 @@ const LandingPage = () => {
                 color="black"
                 fontSize="16px"
                 fontWeight="100"
-                sx={{ marginRight: { xs: "20px", sm: "1px", md: "200px" } }}
+                sx={{
+                  marginRight: { xs: "20px", sm: "1px", md: "200px" },
+                  marginTop: { xs: "20px", md: "0px" },
+                }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                non enim lacus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non enim lacus.
               </Typography>
 
               <Typography
-                marginTop="100px"
                 color="black"
                 fontFamily="Inter"
                 fontWeight="500"
+                sx={{ marginTop: { md: "100px", xs: "50px" } }}
               >
                 30 Day Free Trial No Credit Card Required:
               </Typography>
 
-              
-              {/* Email Input and Button */}
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: { xs: "flex-start", sm: "center" }, // Responsive alignment
-                  flexDirection: { xs: "column", sm: "row" }, // Column on xs, row on larger screens
+                  alignItems: { xs: "flex-start", sm: "center" },
+                  flexDirection: { xs: "column", sm: "row" },
                   marginTop: "20px",
                 }}
               >
-                {/* TextField */}
                 <TextField
                   label="Enter your email"
                   variant="outlined"
                   size="small"
                   sx={{
-                    marginRight: { sm: "2px" }, // Margin only on larger screens
-                    marginBottom: { xs: "8px", sm: "0" }, // Add spacing for xs
-                    width: { xs: "100%", sm: "50%" }, // Full width on xs
+                    marginRight: { sm: "2px" },
+                    marginBottom: { xs: "8px", sm: "0" },
+                    width: { xs: "100%", sm: "50%" },
                   }}
                 />
 
-                {/* Button for larger screens */}
                 <Button
                   sx={{
                     backgroundColor: "black",
@@ -128,15 +142,19 @@ const LandingPage = () => {
                     width: "auto",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
-                    display: { xs: "none", sm: "inline-flex" }, // Only show on sm and larger screens
-                    marginTop: { sm: "0", xs: "8px" }, // Space only on xs
+                    display: { xs: "none", sm: "inline-flex" },
+                    marginTop: { sm: "0", xs: "8px" },
+                    transition: "all 0.3s ease-in-out", // Added transition effect here
+                    "&:hover": {
+                      backgroundColor: "#333", // Darker shade on hover
+                      transform: "scale(1.05)", // Slightly scale up the button
+                    },
                   }}
                   onClick={() => alert("Email Submitted!")}
                 >
                   Get Started ~ it’s free
                 </Button>
 
-                {/* Button for mobile (xs) screens */}
                 <Button
                   sx={{
                     backgroundColor: "black",
@@ -151,8 +169,13 @@ const LandingPage = () => {
                     width: "auto",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
-                    display: { xs: "block", sm: "none" }, // Show only on xs
-                    marginTop: "8px", // Spacing on xs
+                    display: { xs: "block", sm: "none" },
+                    marginTop: "8px",
+                    transition: "all 0.3s ease-in-out", // Added transition effect here
+                    "&:hover": {
+                      backgroundColor: "#333", // Darker shade on hover
+                      transform: "scale(1.05)", // Slightly scale up the button
+                    },
                   }}
                   onClick={() => alert("Email Submitted!")}
                 >
@@ -164,7 +187,6 @@ const LandingPage = () => {
                 ️ Add some additional disclaimer text here.
               </Typography>
 
-              {/* Avatar Stack with Borders */}
               <Box
                 sx={{
                   display: "flex",
@@ -184,7 +206,7 @@ const LandingPage = () => {
                     >
                       <Avatar
                         alt={`Avatar ${index + 1}`}
-                        src={border} // Using imported images
+                        src={border}
                         sx={{
                           width: 56,
                           height: 56,
@@ -192,6 +214,11 @@ const LandingPage = () => {
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           border: "2px solid transparent",
+                          transition: "all 0.3s ease-in-out", // Avatar transition effect
+                          "&:hover": {
+                            transform: "scale(1.2)", // Scale avatar on hover
+                            opacity: 0.8, // Reduce opacity on hover
+                          },
                         }}
                       />
                     </Box>
@@ -216,7 +243,7 @@ const LandingPage = () => {
             </Paper>
           </Grid>
 
-          {/* Right Column (Hide on mobile view, show on medium and larger screens) */}
+          {/* Right Column */}
           <Grid
             item
             xs={12}
@@ -235,7 +262,6 @@ const LandingPage = () => {
                 boxShadow: "none",
               }}
             >
-              {/* Container for Boy and Cloud images */}
               <div style={{ position: "relative", textAlign: "center" }}>
                 <img
                   src={Boy}
@@ -245,6 +271,7 @@ const LandingPage = () => {
                     maxWidth: "800px",
                     display: "block",
                     margin: "0 auto",
+                    animation: "jump 1s infinite", // Jump animation applied here
                   }}
                 />
 
@@ -285,15 +312,16 @@ const LandingPage = () => {
           </Grid>
         </Grid>
       </Box>
-      <LandingPage2></LandingPage2>
-      <LandingPage3></LandingPage3>
-      <LandingPage4></LandingPage4>
-      <LandingPage5></LandingPage5>
-      <LandingPage6></LandingPage6>
-      <LandingPage7></LandingPage7>
-      <LandingPage8></LandingPage8>
-      <LandingPage9></LandingPage9>
-      <Footer></Footer>
+
+      <LandingPage2 />
+      <LandingPage3 />
+      <LandingPage4 />
+      <LandingPage5 />
+      <LandingPage6 />
+      <LandingPage7 />
+      <LandingPage8 />
+      <LandingPage9 />
+      <Footer />
     </>
   );
 };

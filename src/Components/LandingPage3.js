@@ -48,7 +48,7 @@ function LandingPage3() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          // marginTop: { xs: "50px", sm: "0px" },
+          marginTop: { xs: "50px", sm: "10rem" },
          
           
         }}

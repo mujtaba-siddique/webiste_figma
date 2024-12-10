@@ -20,7 +20,7 @@ function FooterGrid() {
   };
 
   return (
-    <Box sx={{ padding: { xs: "2rem", md: "4rem" } }}>
+    <Box sx={{ padding: { xs: "2rem", md: "6rem" } , marginLeft:{md:"4rem"}}}>
       <Grid container spacing={4}>
         {/* First Column (Logo, Social Media, Description) */}
         <Grid
