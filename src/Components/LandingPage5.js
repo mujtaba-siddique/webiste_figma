@@ -29,9 +29,10 @@ function LandingPage5() {
         <Grid item xs={12} md={12} lg={7}>
           <Box
             sx={{
-              // height: "300px",
+              
               borderRadius: 2,
               backgroundColor: "transparent",
+              marginLeft:{xs:"1rem"}
             }}
           >
             <ProductFeatures />
@@ -82,7 +83,7 @@ function LandingPage5() {
               display: "flex",
               alignItems: "center",
               // marginTop: { md: "70px", xs: "20px", lg: "15px" },
-              justifyContent: {lg: 'left', md:"left", sm:"space-between", xs:"space-between"},
+              justifyContent: {lg: 'left', md:"left", sm:"space-between", xs:"space-between"}, marginLeft:{xs:"1rem"}
             }}
           >
             <Box
@@ -116,7 +117,7 @@ function LandingPage5() {
           </Box>
 
           {/* Additional CheckCircleRoundedIcon Section */}
-          <Box sx={{ display: "flex", alignItems: "center", marginTop: "5px" }}>
+          <Box sx={{ display: "flex", alignItems: "center", marginTop: "5px" , marginLeft:{xs:"1rem"}}}>
             <CheckCircleRoundedIcon
               sx={{ fontSize: "24px", color: "#1e2026" }}
             />
@@ -130,8 +131,7 @@ function LandingPage5() {
         <Grid item xs={12} md={12} lg={5}>
           <Paper
             sx={{
-              // marginLeft: { md: "20px",sm:"10px"},
-              //height: "300px",
+              margin:{xs:"1rem"},
               borderRadius: 2,
               // backgroundColor: "white",
               marginTop: { xs: "60px", sm: "6rem", md: "6rem", lg:"0px" },

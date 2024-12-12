@@ -19,7 +19,7 @@ function Grid2() {
     <Box sx={{marginTop:{sm:"5rem",xs:"1rem"}}} >
       <div>
         {/* Second Grid Layout with 12 columns */}
-        <Grid container spacing={2} sx={{ marginTop:{sm:"1rem",}  }}>
+        <Grid container spacing={2} sx={{ marginTop:{sm:"1rem",},marginLeft:{xs:"0.1rem"},marginRight: {xs:"10rem"} }}>
           {/* First Column (7/12 of the grid) */}
           <Grid item xs={12} md={12} lg={5}>
             <Paper

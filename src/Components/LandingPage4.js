@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Grid, Typography } from "@mui/material"; // Import Box and Grid from Material UI
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Grid, Typography } from "@mui/material";
 import CloudImg from "../Images/cloud.png"; // Cloud Image (already imported)
 import Icon1 from "../Images/icon1.png"; // Avatar images (example)
 import Icon2 from "../Images/icon2.png";
@@ -9,7 +9,7 @@ import Icon4 from "../Images/icon4.png";
 // JSON data for the columns with avatar images, headings, and body
 const columnData = [
   {
-    avatar: Icon1, 
+    avatar: Icon1,
     heading: "User Management",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non enim lacus."
   },
@@ -31,6 +31,72 @@ const columnData = [
 ];
 
 function LandingPage4() {
+  const cloudImgRef = useRef(null);
+  const [isCloudVisible, setIsCloudVisible] = useState(false);
+  const [columnVisibility, setColumnVisibility] = useState(new Array(columnData.length).fill(false));
+
+  // Cloud Image Animation Trigger (Intersection Observer)
+  useEffect(() => {
+    const cloudObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCloudVisible(true); // Trigger cloud image transition when it comes into view
+        }
+      },
+      { threshold: 0.5 } // Trigger when at least 50% of the element is visible
+    );
+
+    if (cloudImgRef.current) {
+      cloudObserver.observe(cloudImgRef.current);
+    }
+
+    return () => {
+      if (cloudImgRef.current) {
+        cloudObserver.unobserve(cloudImgRef.current);
+      }
+    };
+  }, []);
+
+  // Column Visibility Animation Trigger (Intersection Observer)
+  const columnRefs = useRef(columnData.map(() => React.createRef()));
+
+  useEffect(() => {
+    const columnObservers = columnRefs.current.map((ref, index) => {
+      return new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setColumnVisibility((prev) => {
+              const newVisibility = [...prev];
+              newVisibility[index] = true; // Trigger visibility for the column
+              return newVisibility;
+            });
+          } else {
+            setColumnVisibility((prev) => {
+              const newVisibility = [...prev];
+              newVisibility[index] = false; // Hide column when not in view
+              return newVisibility;
+            });
+          }
+        },
+        { threshold: 0.5 } // Trigger when at least 50% of the column is in view
+      );
+    });
+
+    columnRefs.current.forEach((ref, index) => {
+      if (ref.current) {
+        columnObservers[index].observe(ref.current);
+      }
+    });
+
+    return () => {
+      columnRefs.current.forEach((ref, index) => {
+        if (ref.current) {
+          columnObservers[index].unobserve(ref.current);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       {/* Cloud Image Section */}
@@ -39,15 +105,20 @@ function LandingPage4() {
           display: "flex", // Use flexbox to center content
           justifyContent: "center", // Horizontally center the content
           alignItems: "center", // Vertically center the content
-          // backgroundColor: "#f0f0f0", // Optional: Light gray background
           marginTop: { xs: "50px", sm: "200px" },
-          
         }}
       >
         <img
+          ref={cloudImgRef} // Reference to the cloud image
           src={CloudImg}
           alt="Cloud"
-          style={{ maxWidth: "100%", height: "auto" }}
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            opacity: isCloudVisible ? 1 : 0, // Fade in effect when visible
+            transform: isCloudVisible ? 'translateY(0)' : 'translateY(-30px)', // Move up animation
+            transition: 'opacity 1s ease-out, transform 1s ease-out', // Transition effect
+          }}
         />
       </Box>
 
@@ -87,15 +158,19 @@ function LandingPage4() {
           <Grid
             item
             xs={12} // 1 column on mobile
-            sm={6} // 2 columns on tablet
-            md={3} // 4 columns on desktop
+            sm={6}  // 2 columns on small screens
+            md={3}  // 4 columns on desktop
             key={index}
+            ref={columnRefs.current[index]} // Add reference to each grid item
             sx={{
               display: "flex",
               justifyContent: "center",
               flexDirection: "column",
               alignItems: "center",
               padding: "10px", // Optional padding for spacing
+              opacity: columnVisibility[index] ? 1 : 0, // Fade in effect when visible
+              transform: columnVisibility[index] ? 'translateY(0)' : 'translateY(-30px)', // Slide up animation
+              transition: 'opacity 1s ease-out, transform 1s ease-out', // Transition effect
             }}
           >
             {/* Avatar Image */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Box, Typography, Grid, Paper } from "@mui/material";
 import Backgroundpic from "../Images/backgroundpink.png";
 import A from "../Images/A.png";
@@ -8,40 +8,60 @@ import Col1 from "./Col1"; // Assuming these are your custom components
 import Col2 from "./Col2";
 import Col3 from "./Col3";
 
-function LandingPage3() {
-  // Data for the columns (in array form)
+const LandingPage3 = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Intersection observer hook to trigger transitions when an element comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Trigger visibility change when in view
+        } else {
+          setIsVisible(false); // Reset visibility when out of view
+        }
+      },
+      { threshold: 0.9 } // Trigger when 50% of the element is in the viewport
+    );
+
+    const element = document.getElementById('landing-page');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
   const columnsData = [
     {
       id: 1,
       image: B,
       title: "Keep on top of project management.",
       description: "This is the content for column 1. You can add text, images, or any other content here.",
-      component: <Col1 />, // The corresponding component to render for column 1
+      component: <Col1 />,
       buttonText: "Learn More",
-      isButtonVisible: true, // Control visibility of button here
+      isButtonVisible: true,
     },
     {
       id: 2,
       image: A,
       title: "Analyze your business results in one place.",
       description: "This is the content for column 2. You can add text, images, or any other content here.",
-      component: <Col2 />, // The corresponding component to render for column 2
+      component: <Col2 />,
       buttonText: "Learn More",
-      isButtonVisible: true, // Set to true to show the button
+      isButtonVisible: true,
     },
     {
       id: 3,
       image: C,
       title: "Keep track of sales and shipping progress.",
       description: "This is the content for column 3. You can add text, images, or any other content here.",
-      component: <Col3 />, // The corresponding component to render for column 3
+      component: <Col3 />,
       buttonText: "Learn More",
-      isButtonVisible: true, // Control visibility of button here
+      isButtonVisible: true,
     },
   ];
 
   return (
-    <>
+    <div id="landing-page">
       {/* Product Features Button */}
       <Box
         sx={{
@@ -49,11 +69,10 @@ function LandingPage3() {
           justifyContent: "center",
           alignItems: "center",
           marginTop: { xs: "50px", sm: "10rem" },
-         
-          
         }}
       >
         <Button
+          className={`button-transition ${isVisible ? "fade-in" : ""}`}
           sx={{
             color: "black",
             backgroundColor: "#FFE785",
@@ -73,35 +92,43 @@ function LandingPage3() {
       </Box>
 
       {/* Main Header */}
-      <Typography
-        variant="h1"
-        sx={{
-          fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-          textAlign: "center",
-          marginTop: "20px",
-          marginX: { xs: "20px", sm: "50px", md: "200px", lg: "400px" },
-        }}
-      >
-        Streamline tasks with optimized workflows
-      </Typography>
+      {/* Main Header */}
+<Typography
+  variant="h1"
+  className={` ${isVisible ? "fade-in-visible" : ""}`}
+  sx={{
+    fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+    textAlign: "center",
+    marginTop: "20px",
+    marginX: { xs: "20px", sm: "50px", md: "auto" }, // 'auto' to center on medium and larger screens
+    maxWidth: { xs: "100%", sm: "80%", md: "80%" }, // Adjusted max width for better visibility on md screens
+    
+    transition: "opacity 1s ease-in-out", // Smooth fade-in transition for visibility
+    display: { xs: "block", sm: "block", md: "block" }, // Hide on xs and sm, show on md and larger
+  }}
+>
+  Streamline tasks with optimized workflows
+</Typography>
 
-      {/* Subtitle */}
-      <Typography
-        variant="body1"
-        sx={{
-          color: "black",
-          textAlign: "center",
-          marginTop: "20px",
-          marginX: { xs: "20px", sm: "50px", md: "200px", lg: "400px" },
-        }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non enim lacus.
-      </Typography>
+{/* Subtitle */}
+<Typography
+  variant="body1"
+  className={`${isVisible ? "fade-in-visible" : ""}`}
+  sx={{
+    color: "black",
+    textAlign: "center",
+    marginTop: "20px",
+    marginX: { xs: "20px", sm: "50px", md: "auto" }, // 'auto' to center on medium and larger screens
+    maxWidth: { xs: "100%", sm: "80%", md: "60%" }, // Set max width to control overflow
+    display: { xs: "block", sm: "block", md: "block" }, // Hide on xs and sm, show on md and larger
+  }}
+>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non enim lacus.
+</Typography>
 
       {/* Background and 3-column Grid */}
       <div
         style={{
-         
           backgroundImage: `url(${Backgroundpic})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -110,119 +137,177 @@ function LandingPage3() {
       >
         <Grid
           container
-          spacing={{xs:7,md:4}}
+          spacing={{ xs: 7, md: 4 }}
           sx={{
             padding: { xs: "20px", md: "40px" },
             display: "flex",
-            flexWrap: "wrap", // Allow wrap for responsiveness
-            marginTop: {md:"20px",xs:"20px"},
-            marginLeft:"1rem",
-            marginRight:"1rem"
-            
+            flexWrap: "wrap",
+            marginTop: { md: "20px", xs: "20px" },
+            marginLeft: "1rem",
+            marginRight: "1rem",
           }}
         >
-          {columnsData.map((column) => (
-            <Grid
-              item
-              xs={12}
-              sm={12} // Equal width for each column
-              md={4} // Equal width for each column
-              key={column.id}
-              sx={{
-                display: "flex",
-                flexDirection: "column", // Ensure the content within is stacked vertically
-                justifyContent: "space-between", // Distribute space evenly
-                height: "100%", // Ensure full height
-              }}
-            >
-              <Paper
-                sx={{
-                  padding: 2,
-                  borderRadius: "16px",
-                  boxShadow: 3,
-                  position: "relative",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%", // Make sure Paper takes up the full height of the grid item
-                  minHeight:"37rem"
-                }}
-              >
-                {/* Image positioned at the top of the column */}
-                <img
-                  src={column.image}
-                  alt={column.title}
-                  style={{
-                    position: "absolute",
-                    top: "-7.5%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "80px",
-                    height: "80px",
-                  }}
-                />
-                <Typography
-                  variant="h3"
-                  fontSize="1.5rem"
-                  sx={{
-                    fontWeight: 700,
-                    color: "text.primary",
-                    marginTop: 4,
-                    textAlign: "center",
-                  }}
-                >
-                  {column.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    marginTop: 2,
-                    color: "black",
-                    textAlign: "center",
-                  }}
-                >
-                  {column.description}
-                </Typography>
-
-                {/* Move Button Above the Component */}
-                {column.isButtonVisible && (
-                  <Button
-                    variant="text"
-                    sx={{
-                      marginTop: 3,
-                      fontFamily: "Inter",
-                      color: "black",
-                      display: "block",
-                      width: {
-                        xs: "150px", // For mobile devices
-                        sm: "200px", // For small screens
-                        md: "250px", // For medium screens
-                        lg: "300px", // For larger screens
-                      },
-                      boxShadow: 2, // Adds shadow
-                      "&:hover": {
-                        boxShadow: 4, // Increases shadow on hover
-                        transition: "box-shadow 0.3s ease-in-out", // Smooth hover effect
-                      },
-                    }}
-                    aria-label={`Learn more about ${column.title}`}
-                  >
-                    {column.buttonText}
-                  </Button>
-                )}
-
-                {/* Add margin-top to the components */}
-                <div style={{ marginTop: "1.5rem", width: "100%" }}>
-                  {column.component} {/* Insert the dynamic component here */}
-                </div>
-              </Paper>
-            </Grid>
+          {columnsData.map((column, index) => (
+            <GridItem key={column.id} column={column} delay={index * 300} />
           ))}
         </Grid>
       </div>
-    </>
+
+      <style jsx>{`
+        /* Button transition on hover */
+        .button-transition {
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .button-transition:hover {
+          transform: scale(1.05);
+          opacity: 0.8;
+        }
+
+        /* Fade-in effect for Typography */
+        .fade-in {
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in-visible {
+          opacity: 1;
+        }
+
+        /* Grid item transition (slide-up and fade-in) */
+        .grid-item-transition {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .grid-item-transition-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Sequential transition delay */
+        .grid-item-transition-visible {
+          transition-delay: var(--transition-delay);
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+// Grid Item Component with transitions and sequential appearance
+const GridItem = ({ column, delay }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Trigger visibility change when in view
+        } else {
+          setIsVisible(false); // Reset visibility when out of view
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the element is in the viewport
+    );
+    const element = document.getElementById(`grid-item-${column.id}`);
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [column.id]);
+
+  return (
+    <Grid
+      item
+      xs={12}
+      sm={12}
+      md={4}
+      id={`grid-item-${column.id}`}
+      className={`grid-item-transition ${isVisible ? "grid-item-transition-visible" : ""}`}
+      style={{ "--transition-delay": `${delay}ms` }} // Set delay for sequential transition
+    >
+      <Paper
+        sx={{
+          padding: 2,
+          borderRadius: "16px",
+          boxShadow: 3,
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          minHeight: "37rem",
+        }}
+      >
+        <img
+          src={column.image}
+          alt={column.title}
+          style={{
+            position: "absolute",
+            top: "-7.5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "80px",
+            height: "80px",
+          }}
+        />
+        <Typography
+          variant="h3"
+          fontSize="1.5rem"
+          sx={{
+            fontWeight: 700,
+            color: "text.primary",
+            marginTop: 4,
+            textAlign: "center",
+          }}
+        >
+          {column.title}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            marginTop: 2,
+            color: "black",
+            textAlign: "center",
+          }}
+        >
+          {column.description}
+        </Typography>
+
+        {/* Button visibility */}
+        {column.isButtonVisible && (
+          <Button
+            variant="text"
+            className="button-transition"
+            sx={{
+              marginTop: 3,
+              fontFamily: "Inter",
+              color: "black",
+              display: "block",
+              width: {
+                xs: "150px", // For mobile devices
+                sm: "200px", // For small screens
+                md: "250px", // For medium screens
+                lg: "300px", // For larger screens
+              },
+              boxShadow: 2,
+              "&:hover": {
+                boxShadow: 4,
+              },
+            }}
+            aria-label={`Learn more about ${column.title}`}
+          >
+            {column.buttonText}
+          </Button>
+        )}
+
+        <div style={{ marginTop: "1.5rem", width: "100%" }}>
+          {column.component}
+        </div>
+      </Paper>
+    </Grid>
+  );
+};
 
 export default LandingPage3;
