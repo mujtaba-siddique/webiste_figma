@@ -398,6 +398,7 @@ function Grid2() {
                 // marginLeft: { md: "10rem", lg: "10rem" },
                 width: "60.72px",
                 height: "60.72px",
+                marginRight:"20px"
               }}
             />
           </Box>

@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Typography, Box, Button, TextField, Stack, Avatar } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Box,
+  Button,
+  TextField,
+  Stack,
+  Avatar,
+} from "@mui/material";
 import PowerfullButtonn from "./PowerfullButtonn";
 import border1 from "../Images/Background+Border.png";
 import border2 from "../Images/Background+Border-1.png";
@@ -9,22 +18,19 @@ const LeftColumn = () => {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setStep(1), 500); 
-    const timer2 = setTimeout(() => setStep(2), 1000); 
-    const timer3 = setTimeout(() => setStep(3), 1500); 
-    const timer4 = setTimeout(() => setStep(4), 2000); 
-    const timer5 = setTimeout(() => setStep(5), 2500); 
-    const timer6 = setTimeout(() => setStep(6), 3000); 
+   
+    const stepDelays = [500, 1000, 1500, 2000, 2500, 3000];
 
+    
+    const timeouts = stepDelays.map((delay, index) =>
+      setTimeout(() => setStep(index + 1), delay)
+    );
+
+   
     return () => {
-      clearTimeout(timer);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-      clearTimeout(timer5);
-      clearTimeout(timer6);
+      timeouts.forEach(timeout => clearTimeout(timeout));
     };
-  }, []);
+  }, []); 
 
   return (
     <Grid
@@ -34,8 +40,7 @@ const LeftColumn = () => {
       style={{
         padding: "20px",
         position: "sticky",
-        top: "0", 
-        height: "calc(100vh - 2rem)", 
+        top: "0",
         zIndex: 1,
       }}
     >
@@ -45,11 +50,12 @@ const LeftColumn = () => {
           padding: "20px",
           background: "transparent",
           boxShadow: "none",
-          marginLeft: "0px",
         }}
       >
+        {/* Powerfull Button */}
         <PowerfullButtonn />
-        
+
+        {/* Main Heading */}
         <Typography
           color="black"
           fontSize="60px"
@@ -66,7 +72,8 @@ const LeftColumn = () => {
         >
           Our cutting-edge software solutions
         </Typography>
-        
+
+        {/* Description Text */}
         <Typography
           fontFamily="Inter, sans-serif"
           color="black"
@@ -83,6 +90,7 @@ const LeftColumn = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non enim lacus.
         </Typography>
 
+        {/* 30 Day Free Trial Text */}
         <Typography
           color="black"
           fontFamily="Inter"
@@ -97,6 +105,7 @@ const LeftColumn = () => {
           30 Day Free Trial No Credit Card Required:
         </Typography>
 
+        {/* Email Input and Button Section */}
         <Box
           sx={{
             display: "flex",
@@ -172,10 +181,12 @@ const LeftColumn = () => {
           </Button>
         </Box>
 
+        {/* Disclaimer */}
         <Typography fontSize="12px" marginTop="10px">
           Add some additional disclaimer text here.
         </Typography>
 
+        {/* User Stats Section */}
         <Box
           sx={{
             display: "flex",
@@ -207,10 +218,18 @@ const LeftColumn = () => {
               </Box>
             ))}
           </Stack>
-          <Typography variant="h" component="h4" sx={{ margin: 0, fontFamily: "Inter", marginLeft: "20px" }}>
+          <Typography
+            variant="h4"
+            component="h4"
+            sx={{ margin: 0, fontFamily: "Inter", marginLeft: "20px" }}
+          >
             24k
-            <Typography variant="body1" component="p" sx={{ margin: 0, fontFamily: "Inter", fontSize: "14px" }}>
-              Active user
+            <Typography
+              variant="body1"
+              component="p"
+              sx={{ margin: 0, fontFamily: "Inter", fontSize: "14px" }}
+            >
+              Active users
             </Typography>
           </Typography>
         </Box>
